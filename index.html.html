@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prosenjit Bari | AI · DevOps · QA Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --navy-light: #1d3461;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --gray: #8a9ab5;
+    --light-gray: #e8ecf2;
+    --accent: #2563b0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.97);
+    backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--gray); text-decoration: none;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37,99,176,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -100px; left: 10%;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.35);
+    color: var(--gold);
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 2px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700; line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: 1rem; color: var(--gray);
+    max-width: 560px; line-height: 1.75;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.7s ease 0.2s both;
+  }
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.7s ease 0.3s both;
+  }
+  .pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #b0bfd8;
+    font-size: 0.78rem; padding: 5px 14px; border-radius: 2px;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.7s ease 0.4s both;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 12px 32px; border-radius: 2px;
+    font-weight: 600; font-size: 0.85rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.5); color: var(--gold);
+    padding: 12px 32px; border-radius: 2px;
+    font-weight: 500; font-size: 0.85rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: rgba(201,168,76,0.1); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    animation: fadeUp 0.7s ease 0.5s both;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 700; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--gray); margin-top: 4px; letter-spacing: 0.05em; }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 90px 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600;
+    display: flex; align-items: center; gap: 10px; margin-bottom: 0.7rem;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 30px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700;
+    color: var(--navy); line-height: 1.2; margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p {
+    font-size: 1rem; line-height: 1.85; color: #3a4a60; margin-bottom: 1.2rem;
+  }
+  .about-text strong { color: var(--navy); }
+  .about-highlights { display: flex; flex-direction: column; gap: 1.2rem; }
+  .highlight-card {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .highlight-card h4 { font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+  .highlight-card p { font-size: 0.82rem; color: #5a6a80; line-height: 1.6; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--cream); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .skill-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 4px; padding: 1.8rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { box-shadow: 0 8px 32px rgba(10,22,40,0.1); transform: translateY(-2px); }
+  .skill-icon {
+    width: 42px; height: 42px;
+    background: var(--navy);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; margin-bottom: 1rem;
+  }
+  .skill-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.8rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag {
+    background: var(--light-gray); color: #3a4a60;
+    font-size: 0.72rem; padding: 3px 10px; border-radius: 2px; font-weight: 500;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--white); }
+  .projects-list { display: flex; flex-direction: column; gap: 2rem; }
+  .project-card {
+    border: 1px solid var(--light-gray);
+    border-radius: 4px; overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .project-card:hover { box-shadow: 0 8px 32px rgba(10,22,40,0.1); }
+  .project-header {
+    background: var(--navy);
+    padding: 1.8rem 2rem;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+  }
+  .project-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; color: var(--white);
+  }
+  .project-header p { font-size: 0.8rem; color: var(--gray); margin-top: 4px; }
+  .project-badge {
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold); font-size: 0.72rem; letter-spacing: 0.08em;
+    padding: 4px 12px; border-radius: 2px; white-space: nowrap; font-weight: 500;
+  }
+  .project-body { padding: 1.8rem 2rem; }
+  .project-body p { font-size: 0.92rem; color: #3a4a60; line-height: 1.75; margin-bottom: 1.2rem; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .tech-chip {
+    background: var(--navy); color: #8ab0d8;
+    font-size: 0.72rem; padding: 4px 12px; border-radius: 2px; font-weight: 500;
+  }
+  .project-achievements { margin-top: 1.2rem; }
+  .project-achievements h4 { font-size: 0.8rem; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .project-achievements ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .project-achievements li {
+    font-size: 0.85rem; color: #3a4a60;
+    padding-left: 1.2rem; position: relative;
+  }
+  .project-achievements li::before {
+    content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications { background: var(--navy); }
+  #certifications .section-title { color: var(--white); }
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 3rem; }
+  .cert-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px; padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: rgba(201,168,76,0.4); }
+  .cert-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+  .cert-card h3 { font-size: 0.92rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem; }
+  .cert-card p { font-size: 0.78rem; color: var(--gray); }
+
+  .awards-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 600; color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .awards-list { display: flex; flex-direction: column; gap: 0.8rem; }
+  .award-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px; padding: 1rem 1.4rem;
+  }
+  .award-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .award-item p { font-size: 0.87rem; color: #b0bfd8; }
+  .award-item strong { color: var(--gold); }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--cream); }
+  .edu-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .edu-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 4px; padding: 1.5rem 1.8rem;
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .edu-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--gold);
+    min-width: 60px; text-align: center;
+  }
+  .edu-divider { width: 1px; height: 50px; background: var(--light-gray); }
+  .edu-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); }
+  .edu-card p { font-size: 0.82rem; color: var(--gray); margin-top: 2px; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); text-align: center; }
+  .contact-inner { max-width: 600px; margin: 0 auto; }
+  .contact-inner p { font-size: 1rem; color: #5a6a80; line-height: 1.75; margin-bottom: 2rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    color: var(--navy); text-decoration: none;
+    font-size: 0.87rem; font-weight: 500;
+    border: 1px solid var(--light-gray);
+    padding: 10px 20px; border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    text-align: center; padding: 2rem;
+    font-size: 0.78rem; color: var(--gray);
+  }
+  footer span { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .nav-links { display: none; }
+    .project-header { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Prosenjit Bari</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">17+ Years of Enterprise Delivery</div>
+    <h1>AI Integration &<br/><span>DevSecOps</span> Leader</h1>
+    <p class="hero-sub">Specializing in GenAI platforms, LLM integration, DevOps automation, and QA engineering — delivering secure, scalable, and compliant solutions across Telecom and Banking.</p>
+    <div class="hero-pills">
+      <span class="pill">AWS Bedrock · LLM</span>
+      <span class="pill">RAG · LangFuse</span>
+      <span class="pill">Kubernetes · Docker</span>
+      <span class="pill">CI/CD · Terraform</span>
+      <span class="pill">Python · Selenium</span>
+      <span class="pill">Responsible AI</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">17+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Global Clients</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Regions Delivered</div>
+      </div>
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Industry Awards</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About Me</div>
+    <div class="section-title">Bridging AI, DevOps &amp; Quality Engineering</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>With over <strong>17 years of experience</strong> across AI integration, DevOps, DevSecOps, and QA, I specialize in delivering enterprise-scale, production-grade solutions in Telecom and Banking domains.</p>
+        <p>Currently spearheading an <strong>AI-driven telecom assistance platform</strong> for a leading European multi-play telecom operator — powered by AWS Bedrock (Claude Opus 4.5), RAG via AWS OpenSearch, LangFuse, and LiteLLM Gateway with Responsible AI guardrails, enabling secure and compliant LLM interactions across connected home devices, billing, and customer systems.</p>
+        <p>I bring a rare combination of hands-on technical depth and delivery leadership — from architecting GenAI pipelines and Kubernetes clusters to driving Agile ceremonies and managing cross-functional global teams.</p>
+        <p>My work spans North America, Europe, Asia Pacific, and Oceania, with global clients including Bell Canada, Rogers Telecom, Orange Telecom, Bouygues Telecom, and TD Bank.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <h4>AI & GenAI Platform Delivery</h4>
+          <p>End-to-end delivery of LLM-powered platforms with RAG pipelines, prompt management, and Responsible AI governance using AWS Bedrock and LangFuse.</p>
+        </div>
+        <div class="highlight-card">
+          <h4>DevOps & DevSecOps Leadership</h4>
+          <p>CI/CD pipelines, Terraform IaC, Docker/Kubernetes orchestration, and security-integrated deployments. Delivered 30%+ reduction in deployment times.</p>
+        </div>
+        <div class="highlight-card">
+          <h4>QA & Test Automation</h4>
+          <p>API automation (Python Pytest, SoapUI), GUI automation (Selenium), vulnerability testing, and end-to-end Agile delivery across global programs.</p>
+        </div>
+        <div class="highlight-card">
+          <h4>Global Delivery & Leadership</h4>
+          <p>Managed cross-functional teams across 4 regions, aligning architecture, data, security, and operations for predictable, transparent delivery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Technical Competencies</div>
+    <div class="section-title">Skills & Technology Stack</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <h3>AI & GenAI Integration</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS Bedrock</span>
+          <span class="skill-tag">Claude Opus 4.5</span>
+          <span class="skill-tag">LangFuse</span>
+          <span class="skill-tag">LiteLLM</span>
+          <span class="skill-tag">RAG</span>
+          <span class="skill-tag">AWS OpenSearch</span>
+          <span class="skill-tag">Responsible AI</span>
+          <span class="skill-tag">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <h3>DevOps & CI/CD</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Argo CD</span>
+          <span class="skill-tag">Terraform</span>
+          <span class="skill-tag">Jenkins</span>
+          <span class="skill-tag">Infrastructure as Code</span>
+          <span class="skill-tag">Python Scripting</span>
+          <span class="skill-tag">Azure DevOps</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐳</div>
+        <h3>Containerization & Cloud</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">Red Hat OpenShift</span>
+          <span class="skill-tag">AWS EC2/S3/RDS</span>
+          <span class="skill-tag">ELB / Auto Scaling</span>
+          <span class="skill-tag">Microservices</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🧪</div>
+        <h3>QA & Test Automation</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python Pytest</span>
+          <span class="skill-tag">Selenium</span>
+          <span class="skill-tag">SoapUI</span>
+          <span class="skill-tag">REST API</span>
+          <span class="skill-tag">Swagger</span>
+          <span class="skill-tag">Jira X-ray</span>
+          <span class="skill-tag">HPQC</span>
+          <span class="skill-tag">Performance Testing</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔒</div>
+        <h3>Security & Networking</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Vulnerability Scanning</span>
+          <span class="skill-tag">Code Analysis</span>
+          <span class="skill-tag">OSPF / BGP</span>
+          <span class="skill-tag">TCP/UDP</span>
+          <span class="skill-tag">VPN / VXLAN</span>
+          <span class="skill-tag">NMAP</span>
+          <span class="skill-tag">Wireshark</span>
+          <span class="skill-tag">PingFederate / MFA</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <h3>Monitoring & Databases</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Prometheus</span>
+          <span class="skill-tag">Grafana</span>
+          <span class="skill-tag">Kibana</span>
+          <span class="skill-tag">Oracle</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">SQL Server</span>
+          <span class="skill-tag">DataMart</span>
+          <span class="skill-tag">Data Warehouse</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Case Studies</div>
+    <div class="section-title">Key Projects & Deliveries</div>
+    <div class="projects-list">
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <h3>AI-Driven Telecom Assistance Platform</h3>
+            <p>Infosys · European Multi-Play Telecom Operator · 2024 – Present</p>
+          </div>
+          <span class="project-badge">GenAI · LLM · RAG</span>
+        </div>
+        <div class="project-body">
+          <p>Spearheaded delivery of a smart connectivity platform powered by GenAI and LLMs, enabling intuitive voice interactions, personalized assistance, and real-time insights for connected home experiences — including mobile usage monitoring, home device management, and seamless Wi-Fi access.</p>
+          <div class="project-achievements">
+            <h4>Key Contributions</h4>
+            <ul>
+              <li>Architected LLM platform on AWS Bedrock (Claude Opus 4.5) with LangFuse prompt management and LiteLLM Gateway with Responsible AI guardrails.</li>
+              <li>Implemented Retrieval-Augmented Generation (RAG) via AWS OpenSearch for contextual, accurate telecom responses.</li>
+              <li>Integrated MFA via PingFederate for secure end-to-end customer authentication across IDM and CSR Care applications.</li>
+              <li>Drove cross-team collaboration across AI engineering, DevOps, security, ACS, Plume Cloud, SSAM Cloud, and Sam Knows.</li>
+              <li>Championed Responsible AI compliance — content safety, explainability, and policy-aligned LLM interactions.</li>
+            </ul>
+          </div>
+          <div class="project-tech">
+            <span class="tech-chip">AWS Bedrock</span>
+            <span class="tech-chip">Claude Opus 4.5</span>
+            <span class="tech-chip">LangFuse</span>
+            <span class="tech-chip">LiteLLM</span>
+            <span class="tech-chip">RAG / OpenSearch</span>
+            <span class="tech-chip">PingFederate</span>
+            <span class="tech-chip">Responsible AI</span>
+            <span class="tech-chip">Agile / Scrum</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <h3>Wi-Fi Diagnostics & Checkup Platform</h3>
+            <p>Ericsson · Bell Canada · 2021 – 2024</p>
+          </div>
+          <span class="project-badge">DevOps · Microservices · API</span>
+        </div>
+        <div class="project-body">
+          <p>Designed and delivered a Wi-Fi diagnostics solution providing technicians and customers with live network readings, troubleshooting instructions, and diagnostic results — reducing truck rolls and optimizing Wi-Fi Pod placements across customer homes.</p>
+          <div class="project-achievements">
+            <h4>Key Contributions</h4>
+            <ul>
+              <li>Designed data flow diagrams for Wi-Fi diagnostics across TMF APIs: Service Problem (656), Resource Inventory (639), Event Management (688), Alarm Management (642), and Task Flow (701).</li>
+              <li>Led CI/CD pipeline implementation via GitHub Actions and Argo CD, reducing deployment times by 30%.</li>
+              <li>Automated infrastructure provisioning using Terraform, improving scalability and resource efficiency.</li>
+              <li>Implemented Prometheus-based log aggregation and monitoring for real-time issue resolution.</li>
+              <li>Containerized applications with Docker and orchestrated Kubernetes deployments.</li>
+            </ul>
+          </div>
+          <div class="project-tech">
+            <span class="tech-chip">Kubernetes</span>
+            <span class="tech-chip">Docker</span>
+            <span class="tech-chip">GitHub Actions</span>
+            <span class="tech-chip">Argo CD</span>
+            <span class="tech-chip">Terraform</span>
+            <span class="tech-chip">Prometheus</span>
+            <span class="tech-chip">TMF APIs</span>
+            <span class="tech-chip">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <h3>End-to-End IPTV & OTT Platform Delivery</h3>
+            <p>MediaKind / Ericsson · Bouygues, Vodafone, Rogers, Orange · 2011 – 2021</p>
+          </div>
+          <span class="project-badge">IPTV · OTT · QA Automation</span>
+        </div>
+        <div class="project-body">
+          <p>Delivered cloud-native, next-generation IPTV and OTT solutions for multiple Tier-1 telecom operators globally — including MediaFirst TV Platform, Encoding On-Demand, VSPP, and CMS — with comprehensive functional, automation, and security testing.</p>
+          <div class="project-achievements">
+            <h4>Key Contributions</h4>
+            <ul>
+              <li>Developed API automation using Python Pytest and GUI automation using Selenium for operator portals.</li>
+              <li>Conducted vulnerability and robustness testing: URL manipulation, cookie-based testing, brute-force attack simulation, and NMAP scanning.</li>
+              <li>Managed CI/CD pipelines with Jenkins, Docker/Kubernetes orchestration, and Terraform IaC.</li>
+              <li>Tested DRM profiles, HLS manifest verification, CDN integration, Catch-Up TV, Time Shift, and Restart TV across multiple device types.</li>
+            </ul>
+          </div>
+          <div class="project-tech">
+            <span class="tech-chip">Python Pytest</span>
+            <span class="tech-chip">Selenium</span>
+            <span class="tech-chip">Docker</span>
+            <span class="tech-chip">Kubernetes</span>
+            <span class="tech-chip">Jenkins</span>
+            <span class="tech-chip">Terraform</span>
+            <span class="tech-chip">NMAP</span>
+            <span class="tech-chip">DRM / HLS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS & AWARDS -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="section-label">Recognition</div>
+    <div class="section-title">Certifications & Awards</div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <h3>Certified Software Tester Engineer</h3>
+        <p>CSTE — Quality Assurance Institute</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <h3>AWS Cloud Certification</h3>
+        <p>Experienced & Fundamental Level — Conducted by Ericsson</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🌐</div>
+        <h3>Cisco Certified Network Associate</h3>
+        <p>CCNA — Cisco Systems</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">📋</div>
+        <h3>ITIL Foundation</h3>
+        <p>IT Service Management — ITIL</p>
+      </div>
+    </div>
+
+    <div class="awards-title">Awards & Accolades</div>
+    <div class="awards-list">
+      <div class="award-item">
+        <div class="award-icon">🏆</div>
+        <p><strong>Rockstar Award (2023)</strong> — Ericsson, for outstanding delivery excellence</p>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">⚡</div>
+        <p><strong>Fast & Flawless Hall of Fame (2015 & 2012)</strong> — Ericsson, for IPTV Project delivery</p>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🌟</div>
+        <p><strong>Outstanding Team Award — ADMS Connect Q2</strong> — Ericsson, for excellent IPTV Project delivery</p>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">⭐</div>
+        <p><strong>Star Test Analyst</strong> — Cognizant, for CSP Testing delivery excellence</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-label">Academic Background</div>
+    <div class="section-title">Education</div>
+    <div class="edu-list">
+      <div class="edu-card">
+        <div class="edu-year">2025</div>
+        <div class="edu-divider"></div>
+        <div>
+          <h3>Master of Technology in Cloud Computing — CGPA 7.8</h3>
+          <p>Birla Institute of Technology & Science (BITS), Pilani</p>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">2006</div>
+        <div class="edu-divider"></div>
+        <div>
+          <h3>Bachelor of Technology — CGPA 7.3</h3>
+          <p>West Bengal University of Technology</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="section-label" style="justify-content:center">Contact</div>
+      <div class="section-title" style="text-align:center">Let's Connect</div>
+      <p>Open to connecting with professionals in AI/MLOps, DevSecOps, cloud-native architecture, and QA automation. Based in Kolkata, India — available globally.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:pupaisit@gmail.com">✉️ pupaisit@gmail.com</a>
+        <a class="contact-link" href="tel:+919831054023">📞 +91 98310 54023</a>
+        <a class="contact-link" href="https://linkedin.com/in/prosenjit-bari" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Prosenjit Bari</span> · AI Integration & DevSecOps Leader · Kolkata, India</p>
+</footer>
+
+</body>
+</html>
